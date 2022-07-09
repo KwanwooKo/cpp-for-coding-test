@@ -17,13 +17,20 @@ int main(void) {
         if (n == 1) {
             break;
         }
+        else if (n == 0) {  
+            // 나머지를 뺄 때 n < k 인 경우 0이 돼기 때문에 1을 빼준다.
+            ans--;
+            break;
+        }
         if (n % k == 0) {
             n /= k;
+            ans++;
         }
         else {
-            n--;
+            int mod = n % k;
+            n -= mod;
+            ans += mod;
         }
-        ans++;
     }
     cout << ans << endl;
     return 0;
