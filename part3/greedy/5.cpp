@@ -7,6 +7,7 @@
 #define endl '\n'
 using namespace std;
 typedef long long ll;
+int memo[11];
 int main(void) {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -15,19 +16,16 @@ int main(void) {
     int n, m;
     cin >> n >> m;
     vector<int> d;
-
     for (int i = 0; i < n; i++) {
         int num;
         cin >> num;
+        memo[num]++;
         d.push_back(num);
     }
     int ans = 0;
-    for (int i = 0; i < d.size(); i++) {
-        for (int j = i + 1; j < d.size(); j++) {
-            if (d[i] != d[j]) {
-                ans++;
-            }
-        }
+    for (int i = 1; i <= m; i++) {
+        n -= memo[i];
+        ans += memo[i] * n;
     }
     cout << ans << endl;
     return 0;
