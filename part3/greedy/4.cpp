@@ -8,7 +8,6 @@
 using namespace std;
 typedef long long ll;
 int main(void) {
-    // 해설 참조함
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);

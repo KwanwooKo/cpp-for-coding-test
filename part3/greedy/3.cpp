@@ -51,15 +51,15 @@ int main(void) {
         }
         // 마지막 index 처리
         if (i == s.size() - 1) {
-            if (s[i] == '1' && startZero == false) {
+            if (s[i] == '1' && startOne == false) {
                 countZero++;
             }
-            if (s[i] == '0' && startOne == false) {
+            if (s[i] == '0' && startZero == false) {
                 countOne++;
             }
         }
     }
-    cout << max(countZero, countOne) << endl; // 왜...?
+    cout << min(countZero, countOne) << endl;
 
     return 0;
 }
