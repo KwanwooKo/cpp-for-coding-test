@@ -9,7 +9,7 @@ using namespace std;
 typedef long long ll;
 int map[51][51];
 bool check[51][51];
-int dx[] = {1, -1, 0, 0};
+int dx[] = {1, -1, 0, 0}; 
 int dy[] = {0, 0, 1, -1};
 int n, l, r;
 int ans;
