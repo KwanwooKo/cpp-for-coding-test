@@ -11,7 +11,7 @@ bool check[300001];
 int count[300001];
 vector<int> ans;
 int n, m, k, x;
-int main(void) {
+int main(void) { 
     /*  dfs 가 안됨
      *  4 4 2 1
      *  1 2
