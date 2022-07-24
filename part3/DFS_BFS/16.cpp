@@ -8,7 +8,7 @@ int a[10][10];
 int b[10][10];
 int dx[] = {0, 0, 1, -1};
 int dy[] = {1, -1, 0, 0};
-int n, m;
+int n, m; 
 int bfs() {
     queue<pair<int, int>> q;
     for (int i = 0; i < n; i++) {
