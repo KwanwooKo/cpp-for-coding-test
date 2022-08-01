@@ -16,7 +16,7 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    for (int i = 0; i < 30000; i++) {
+    for (int i = 1; i <= 30000; i++) {
         node_price[i] = INF;
     }
     int n, m, c;
@@ -27,7 +27,7 @@ int main() {
         edges[from].push_back({to, price});
     }
     // (비용, 노드)
-    priority_queue<pair<int, int>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
 
     pq.push({0, c});
     node_price[c] = 0;
