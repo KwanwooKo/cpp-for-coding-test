@@ -9,18 +9,22 @@
 #define INF (int)1e9
 using namespace std;
 typedef long long ll;
-int disjoint_sets[100001];
-bool find_parents(int node, int cmp_node) {
-    int curr = node;
-    while (1) {
-        if (curr == cmp_node) {
-            return true;
-        }
-        if (disjoint_sets[curr] == curr) {
-            break;
-        }
+int disjoint_sets[1000001];
+int find_parents(int node) {
+    if (disjoint_sets[node] != node) {
+        disjoint_sets[node] = find_parents(disjoint_sets[node]);
     }
-    return false;
+    return disjoint_sets[node];
+}
+void make_sets(int from, int to) {
+    from = find_parents(from);
+    to = find_parents(to);
+    if (from < to) {
+        disjoint_sets[to] = from;
+    }
+    else {
+        disjoint_sets[from] = to;
+    }
 }
 int main() {
     ios_base::sync_with_stdio(false);
@@ -28,7 +32,7 @@ int main() {
     cout.tie(0);
     int n, m;
     cin >> n >> m;
-    for (int i = 1; i <= 100000; i++) {
+    for (int i = 1; i <= 1000000; i++) {
         disjoint_sets[i] = i;
     }
     for (int i = 0; i < m; i++) {
@@ -38,11 +42,11 @@ int main() {
             swap(from, to);
         // 팀 합치기
         if (flag == 0) {
-            disjoint_sets[to] = from;
+            make_sets(from, to);
         }
         // 같은 팀 여부 확인
         if (flag == 1) {
-            if (find_parents(from, to)) {
+            if (find_parents(from) == find_parents(to)) {
                 cout << "YES" << endl;
             }
             else {
