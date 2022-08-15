@@ -7,22 +7,36 @@ using namespace std;
 typedef long long ll;
 class DP_Part3_35 {
 private:
-    int n, count, ans;
+    int n, ans;
+    int num2, num3, num5;
+    int i2, i3, i5;
     // 최대로 될 수 있는 못생긴 수
-    bool memo[2001];
+    int memo[1001];
 public:
     DP_Part3_35() {
         cin >> n;
-        for (int i = 0; i <= 2000; i++) {
-            memo[i] = false;
+        for (int i = 0; i <= 1000; i++) {
+            memo[i] = 0;
         }
         memo[1] = true;
-        count = 0;
+        i2 = i3 = i5 = 0;
+        num2 = 2, num3 = 3, num5 = 5;
+        memo[1] = 1;
     }
     void init() {
-        for (int i = 2; i <= 2000; i++) {
-            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0) {
-                memo[i] = true;
+        for (int i = 1; i <= n; i++) {
+            memo[i] = min(num2, min(num3, num5));
+            if (memo[i] == num2) {
+                i2++;
+                num2 = memo[i2] * 2;
+            }
+            if (memo[i] == num3) {
+                i3++;
+                num3 = memo[i3] * 3;
+            }
+            if (memo[i] == num5) {
+                i5++;
+                num5 = memo[i5] * 5;
             }
         }
     }
@@ -31,13 +45,7 @@ public:
         print();
     }
     void print() {
-        for (int i = 1; i <= 2000; i++) {
-            if (memo[i]) count++;
-            if (count == n) {
-                ans = i;
-                break;
-            }
-        }
+        ans = memo[n - 1];
         cout << ans << endl;
     }
 };
