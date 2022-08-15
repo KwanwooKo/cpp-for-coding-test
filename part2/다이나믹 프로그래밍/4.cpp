@@ -33,9 +33,9 @@ public:
     }
     void solve() {
         for (int i = 3; i <= n; i++) {
-            memo[i][0] = memo[i - 1][0] + memo[i - 1][1] + memo[i - 1][2];
-            memo[i][1] = memo[i - 2][0] + memo[i - 2][1] + memo[i - 2][2];
-            memo[i][2] = memo[i - 2][0] + memo[i - 2][1] + memo[i - 2][2];
+            memo[i][0] = memo[i - 1][0] % MOD + memo[i - 1][1] % MOD + memo[i - 1][2] % MOD;
+            memo[i][1] = memo[i - 2][0] % MOD + memo[i - 2][1] % MOD + memo[i - 2][2] % MOD;
+            memo[i][2] = memo[i - 2][0] % MOD + memo[i - 2][1] % MOD + memo[i - 2][2] % MOD;
         }
         print();
         // display();
@@ -55,7 +55,7 @@ public:
             ans = ans % MOD + memo[n][i] % MOD;
             ans %= MOD;
         }
-        cout << ans << endl;
+        cout << ans % MOD << endl;
     }
 };
 
